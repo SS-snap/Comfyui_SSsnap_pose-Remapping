@@ -1,83 +1,128 @@
-import json
 import numpy as np
+import json
 
 class ApplyPoseDiff:
     @classmethod
     def INPUT_TYPES(cls):
-        return {
-            "required": {
-                "pose_diff": ("POSE_KEYPOINT", {}),          # 差值数据
-                "original_frame_pose": ("POSE_KEYPOINT", {}),# 原始关键帧数据
-                "canvas_width": ("INT", {"default": 1440}),   # 画布宽度
-                "canvas_height": ("INT", {"default": 1440})   # 画布高度
-            }
+        toggles = {
+            "neck": ("BOOLEAN", {"default": False}),
+            "right_elbow": ("BOOLEAN", {"default": False}),
+            "right_wrist": ("BOOLEAN", {"default": True}),
+            "left_elbow": ("BOOLEAN", {"default": False}),
+            "left_wrist": ("BOOLEAN", {"default": True}),
+            "right_knee": ("BOOLEAN", {"default": False}),
+            "right_ankle": ("BOOLEAN", {"default": False}),
+            "left_knee": ("BOOLEAN", {"default": False}),
+            "left_ankle": ("BOOLEAN", {"default": False})
         }
+        required = {
+            "pose_diff": ("POSE_KEYPOINT", {}),
+            "original_frame_pose": ("POSE_KEYPOINT", {}),
+            "prev_original_frame_pose": ("POSE_KEYPOINT", {}),
+            "canvas_width": ("INT", {"default": 1440}),
+            "canvas_height": ("INT", {"default": 1440}),
+            **toggles
+        }
+        optional = {
+            "scaled_pose_diff": ("POSE_KEYPOINT", {}),
+            "current_step": ("INT", {}),
+            "total_steps": ("INT", {})
+        }
+        return {"required": required, "optional": optional}
 
-    # 输出类型为 POSE_KEYPOINT，直接对应 RenderPeopleKps 的输入
     RETURN_TYPES = ("POSE_KEYPOINT",)
     RETURN_NAMES = ("adjusted_frame_pose",)
     FUNCTION = "apply_diff"
     CATEGORY = "Snap Processing"
 
-    def extract_pose_array(self, data):
-        """
-        安全地提取 people[0].pose_keypoints_2d，返回 numpy 数组。
-        data 可能是 [ { ... } ] 或 { ... } 两种情况。
-        """
-        # 若外层是 list，就取第 0 个
-        if isinstance(data, list):
-            data = data[0]
-        try:
-            pose_list = data["people"][0]["pose_keypoints_2d"]
-            return np.array(pose_list)
-        except (IndexError, KeyError, TypeError):
-            raise ValueError("Input pose data is invalid or malformed.")
+    COCO18_MAP = {
+        1: "neck", 3: "left_elbow", 4: "left_wrist",
+        6: "right_elbow", 7: "right_wrist",
+        9: "left_knee", 10: "left_ankle",
+        12: "right_knee", 13: "right_ankle",
+    }
 
-    def extract_other_keypoints(self, data):
-        """
-        从原始数据中提取 face、手等信息，用于在输出里保持它们。
-        若不需要保留，可注释掉。
-        """
-        if isinstance(data, list):
-            data = data[0]
-        # 为防止找不到对应字段，使用 get
-        person = data["people"][0]
+    BODY25_MAP = {
+        1: "neck", 3: "left_elbow", 4: "left_wrist",
+        6: "right_elbow", 7: "right_wrist",
+        10: "left_knee", 11: "left_ankle",
+        13: "right_knee", 14: "right_ankle",
+    }
+
+    def _arr(self, d):
+        if isinstance(d, list):
+            d = d[0]
+        return np.array(d["people"][0]["pose_keypoints_2d"]).reshape(-1, 3)
+
+    def _others(self, d):
+        if isinstance(d, list):
+            d = d[0]
+        p = d["people"][0]
         return {
-            "face_keypoints_2d": person.get("face_keypoints_2d", []),
-            "hand_left_keypoints_2d": person.get("hand_left_keypoints_2d", []),
-            "hand_right_keypoints_2d": person.get("hand_right_keypoints_2d", [])
+            "face_keypoints_2d": p.get("face_keypoints_2d", []),
+            "hand_left_keypoints_2d": p.get("hand_left_keypoints_2d", []),
+            "hand_right_keypoints_2d": p.get("hand_right_keypoints_2d", [])
         }
 
-    def apply_diff(self, pose_diff, original_frame_pose, canvas_width, canvas_height):
-        # 1) 提取原始 pose & 差值 pose
-        original_array = self.extract_pose_array(original_frame_pose)
-        diff_array = self.extract_pose_array(pose_diff)
+    def apply_diff(
+        self,
+        pose_diff,
+        original_frame_pose,
+        prev_original_frame_pose,
+        canvas_width,
+        canvas_height,
+        scaled_pose_diff=None,
+        current_step=None,
+        total_steps=None,
+        **kw
+    ):
+        cur = self._arr(original_frame_pose)
+        prev = self._arr(prev_original_frame_pose)
+        delta = self._arr(pose_diff)
 
-        # 2) 检查一致性
-        if original_array.size == 0 or diff_array.size == 0 or original_array.size != diff_array.size:
-            raise ValueError("Input pose data is invalid or keypoints are mismatched.")
+        if cur.shape != prev.shape or cur.shape != delta.shape:
+            raise ValueError("Pose size mismatch.")
+        n_pts = delta.shape[0]
+        idx_map = self.BODY25_MAP if n_pts >= 25 else self.COCO18_MAP
 
-        # 3) 应用差值
-        adjusted_array = (original_array + diff_array).tolist()
+        eps = 1e-5
+        ratio = np.linalg.norm((cur - prev)[:, :2]) / max(np.linalg.norm(delta[:, :2]), eps)
 
-        # 4) 若想保留原始 hand/face 关键点，提取并合并
-        other_kps = self.extract_other_keypoints(original_frame_pose)
+        mask = np.zeros((n_pts, 1), dtype=bool)
+        for idx, name in idx_map.items():
+            if idx < n_pts and kw.get(name, False):
+                mask[idx] = True
 
-        # 5) 构建新的关键帧数据 (Python 对象)
-        #    与 RenderPeopleKps 中 decode_json_as_poses(kps) 兼容
-        adjusted_frame = [{
-            "people": [
-                {
-                    "pose_keypoints_2d": adjusted_array,
-                    "hand_left_keypoints_2d": other_kps["hand_left_keypoints_2d"],
-                    "hand_right_keypoints_2d": other_kps["hand_right_keypoints_2d"],
-                    "face_keypoints_2d": other_kps["face_keypoints_2d"]
-                }
-            ],
+        final_delta = np.where(mask, delta * ratio, delta)
+        adj = cur + final_delta
+
+        # ---------- 缓动应用 scaled_pose_diff ---------- #
+        if (
+            scaled_pose_diff is not None
+            and current_step is not None
+            and total_steps is not None
+        ):
+            spd = self._arr(scaled_pose_diff)
+            if spd.shape == adj.shape:
+                if total_steps <= 1 or current_step <= 1:
+                    t = 0.0
+                elif current_step >= total_steps:
+                    t = 1.0
+                else:
+                    t = current_step / total_steps
+                adj += spd * t
+
+        out = adj.reshape(-1).tolist()
+        others = self._others(original_frame_pose)
+        return ([{
+            "people": [{
+                "pose_keypoints_2d": out,
+                "hand_left_keypoints_2d": others["hand_left_keypoints_2d"],
+                "hand_right_keypoints_2d": others["hand_right_keypoints_2d"],
+                "face_keypoints_2d": others["face_keypoints_2d"]
+            }],
             "canvas_width": canvas_width,
             "canvas_height": canvas_height
-        }]
+        }],)
 
-        # 返回一个 tuple，里面只有一个值，供 ComfyUI 使用
         return (adjusted_frame,)
-
