@@ -10,37 +10,49 @@
 ---
 
 ✅ Skeleton Remapping – Automatically remap pose differences from the first frame to the entire animation
+
 ✅ 骨骼重映射：基于第一帧姿态差异，自动映射全帧姿态
 
 ✅ Motion-Aware Scaling – Dynamically scale movement on end-effectors (hands, feet) based on motion magnitude
+
 ✅ 支持比例缩放：末端关键点（手、脚）动作幅度可自适应
 
 ✅ Joint Locking – Keep shoulders and hips fixed to preserve torso stability
+
 ✅ 关节锁定：肩膀与髋部始终固定，保持身体稳定性
 
 ✅ Easing to Target Poses – Supports optional scaled_pose_diff + t to smoothly blend into global targets
+
 ✅ 动作缓动过渡：支持 optional scaled_pose_diff + t，实现向任意姿态过渡
 
 ✅ COCO‑18 & BODY‑25 Compatible – Auto-detects keypoint format
+
 ✅ 兼容 COCO‑18 与 BODY‑25：自动判断关键点格式
 
 ✅ Native ComfyUI Integration – Seamlessly works with ControlNet-style pose pipelines
+
 ✅ ComfyUI 原生节点，支持与 ControlNet pose pipeline 无缝集成
 
 🚀 Use Cases | 应用场景
+---
 🔄 Smooth animation retargeting for pose keypoints
+
 姿态动画过渡平滑化
 
 🤖 Mecha / Robot control with rigid torso preservation
+
 机器人 / 机甲 动作调整（保持躯干刚性）
 
 🛠️ Keyframe cleanup after manual OpenPose editing
+
 手工编辑后的关键帧修复
 
 🎥 OpenPose-based motion correction or interpolation
+
 OpenPose 驱动的动作补间与矫正
 
 🎞️ Multi-segment motion blending for consistent animation
+
 多段姿态插值动画构建
 
 ---
