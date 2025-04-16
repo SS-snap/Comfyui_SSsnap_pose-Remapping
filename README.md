@@ -7,6 +7,8 @@
 ---
 
 🧠 Features | 功能特点
+---
+
 ✅ Skeleton Remapping – Automatically remap pose differences from the first frame to the entire animation
 ✅ 骨骼重映射：基于第一帧姿态差异，自动映射全帧姿态
 
