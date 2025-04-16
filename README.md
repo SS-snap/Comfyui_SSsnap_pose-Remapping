@@ -69,5 +69,4 @@ OpenPose 驱动的动作补间与矫正
 | `total_steps` *(可选)*      | `INT`          | 总帧数（用于插值） |
 | `canvas_width`       | `INT`           | 输出图像宽度 |
 | `canvas_height`      | `INT`           | 输出图像高度 |
-| *末端关节开关*         | `BOOLEAN`       | 是否启用该关键点的比例变换（如 left_wrist、right_ankle 等） |
 
