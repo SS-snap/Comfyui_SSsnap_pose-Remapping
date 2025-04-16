@@ -1,30 +1,45 @@
-# ApplyPoseDiff – 姿态缓动调整节点 for ComfyUI
+# OpenPose_Remapping for ComfyUI(骨骼重映射节点)
 
-A smooth pose transformation node for OpenPose keypoints in ComfyUI, supporting easing-based motion, joint locking, and dynamic action scaling.
+> ✨ A pose remapping node with support for joint locking, motion-aware scaling, and optional easing – perfect for animation refinement and mech rig control.
 
-一个适用于 ComfyUI 的 OpenPose 姿态平滑过渡节点，支持线性缓动、比例缩放和关节锁定，帮助你生成自然连贯的动画动作。
-
----
-
-## 🧠 Features | 功能特点
-
-- ✅ 支持 COCO‑18 与 BODY‑25 两种姿态格式  
-- ✅ 锁定肩膀与髋部关键点，避免躯干漂移  
-- ✅ 手动开启末端关键点（腕、肘、膝、踝、颈部）是否参与比例计算  
-- ✅ 使用线性缓动，t ∈ [0,1] 实现平滑过渡  
-- ✅ 自动根据前后帧动作幅度，动态调整差值比例  
-- ✅ 可选的 `scaled_pose_diff` 实现全局过渡到指定目标姿态  
-- ✅ 可用于任何支持 `POSE_KEYPOINT` 的渲染节点，如 `RenderPeopleKps`
+一个用于 **骨骼重映射（Skeleton Remapping）** 的 ComfyUI 节点，支持锁定躯干、末端关键点比例调节、帧间缓动过渡等功能，可用于高质量的人体姿态变换、动画平滑处理与机甲刚体控制。
 
 ---
 
-## 🚀 Use Cases | 应用场景
+🧠 Features | 功能特点
+✅ Skeleton Remapping – Automatically remap pose differences from the first frame to the entire animation
+✅ 骨骼重映射：基于第一帧姿态差异，自动映射全帧姿态
 
-- 姿态动画过渡平滑化  
-- 机器人 / 机甲 动作调整（保持躯干刚性）  
-- 手工编辑后的关键帧修复  
-- OpenPose 驱动的动作补间与矫正  
-- 多段姿态插值动画构建
+✅ Motion-Aware Scaling – Dynamically scale movement on end-effectors (hands, feet) based on motion magnitude
+✅ 支持比例缩放：末端关键点（手、脚）动作幅度可自适应
+
+✅ Joint Locking – Keep shoulders and hips fixed to preserve torso stability
+✅ 关节锁定：肩膀与髋部始终固定，保持身体稳定性
+
+✅ Easing to Target Poses – Supports optional scaled_pose_diff + t to smoothly blend into global targets
+✅ 动作缓动过渡：支持 optional scaled_pose_diff + t，实现向任意姿态过渡
+
+✅ COCO‑18 & BODY‑25 Compatible – Auto-detects keypoint format
+✅ 兼容 COCO‑18 与 BODY‑25：自动判断关键点格式
+
+✅ Native ComfyUI Integration – Seamlessly works with ControlNet-style pose pipelines
+✅ ComfyUI 原生节点，支持与 ControlNet pose pipeline 无缝集成
+
+🚀 Use Cases | 应用场景
+🔄 Smooth animation retargeting for pose keypoints
+姿态动画过渡平滑化
+
+🤖 Mecha / Robot control with rigid torso preservation
+机器人 / 机甲 动作调整（保持躯干刚性）
+
+🛠️ Keyframe cleanup after manual OpenPose editing
+手工编辑后的关键帧修复
+
+🎥 OpenPose-based motion correction or interpolation
+OpenPose 驱动的动作补间与矫正
+
+🎞️ Multi-segment motion blending for consistent animation
+多段姿态插值动画构建
 
 ---
 
@@ -42,17 +57,3 @@ A smooth pose transformation node for OpenPose keypoints in ComfyUI, supporting 
 | `canvas_height`      | `INT`           | 输出图像高度 |
 | *末端关节开关*         | `BOOLEAN`       | 是否启用该关键点的比例变换（如 left_wrist、right_ankle 等） |
 
----
-
-## ⚙️ Internal Logic | 节点核心逻辑
-
-### 1. 应用姿态差值
-
-使用 `pose_diff`（初始调整差）对每帧姿态进行叠加，肩部和髋部始终应用，不做比例调整。
-
-### 2. 动作幅度比例控制
-
-动态计算当前帧动作与初始差值的比例：
-
-```python
-ratio = ||cur - prev|| / (||pose_diff|| + ε)
