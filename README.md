@@ -43,17 +43,6 @@
 
 机器人 / 机甲 动作调整（保持躯干刚性）
 
-🛠️ Keyframe cleanup after manual OpenPose editing
-
-手工编辑后的关键帧修复
-
-🎥 OpenPose-based motion correction or interpolation
-
-OpenPose 驱动的动作补间与矫正
-
-🎞️ Multi-segment motion blending for consistent animation
-
-多段姿态插值动画构建
 
 ---
 
