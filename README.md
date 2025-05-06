@@ -6,6 +6,14 @@
 
 ---
 
+## 🔗 相关资源
+
+- 🧠 **模型下载地址**：  
+  [Wan2.1-Fun-14B-Control（Hugging Face）](https://huggingface.co/alibaba-pai/Wan2.1-Fun-14B-Control/tree/main)
+
+- 🧩 **ComfyUI 配套节点**：  
+  [ComfyUI OpenPose editor（GitHub）](https://github.com/huchenlei/ComfyUI-openpose-editor)
+
 🧠 Features | 功能特点
 ---
 
