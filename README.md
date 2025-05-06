@@ -59,3 +59,19 @@
 | `canvas_width`       | `INT`           | 输出图像宽度 |
 | `canvas_height`      | `INT`           | 输出图像高度 |
 
+
+## display
+
+Skeletal Remapping +  3D Composition 🦴
+https://github.com/user-attachments/assets/b6460591-ad93-46fb-b4f5-864b4b4cceac
+
+Multi-Camera AI Cinematography 📹
+https://github.com/user-attachments/assets/a90f4005-d8f7-46fa-a9cf-e05332fcb654
+
+
+
+
+
+
+
+
