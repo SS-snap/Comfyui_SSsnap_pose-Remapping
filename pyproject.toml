@@ -1,0 +1,14 @@
+[project]
+name = "sssnap_pose-remapping"
+description = ""
+version = "1.0.0"
+license = {file = "LICENSE"}
+
+[project.urls]
+Repository = "https://github.com/SS-snap/Comfyui_SSsnap_pose-Remapping"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = ""
+DisplayName = "Comfyui_SSsnap_pose-Remapping"
+Icon = ""
