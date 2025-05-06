@@ -63,10 +63,22 @@
 ## display
 
 Skeletal Remapping +  3D Composition 🦴
-https://github.com/user-attachments/assets/b6460591-ad93-46fb-b4f5-864b4b4cceac
+
+
+
+https://github.com/user-attachments/assets/2134ba60-9526-40a6-a653-072945422101
+
+
+
 
 Multi-Camera AI Cinematography 📹
-https://github.com/user-attachments/assets/a90f4005-d8f7-46fa-a9cf-e05332fcb654
+
+
+
+
+
+
+https://github.com/user-attachments/assets/24875b91-3c67-46d1-898a-2f374f9b94da
 
 
 
