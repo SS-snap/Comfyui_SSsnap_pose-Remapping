@@ -1,0 +1,14 @@
+[project]
+name = "Comfyui_SSsnap_pose-Remapping"
+description = "A pose remapping node with support for joint locking, motion-aware scaling, and optional easing - perfect for animation refinement and mech rig control."
+
+version = "1.0.0"
+
+[project.urls]
+Repository = "https://github.com/SS-snap/Comfyui_SSsnap_pose-Remapping"
+#  Used by Comfy Registry https://comfyregistry.org
+
+[tool.comfy]
+PublisherId = "snap-demo"
+DisplayName = "Comfyui_SSsnap_pose-Remapping"
+Icon = ""
