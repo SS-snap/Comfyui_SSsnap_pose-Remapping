@@ -20,7 +20,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "姿态关键点",
+          "label": "kps",
           "name": "kps",
           "type": "POSE_KEYPOINT",
           "link": 1
@@ -28,7 +28,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -39,7 +39,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "RenderPeopleKps"
+        "Node name for S&R": "RenderPeopleKps",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         true,
@@ -63,7 +64,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "批次管理",
+          "label": "meta_batch",
           "name": "meta_batch",
           "shape": 7,
           "type": "VHS_BatchManager",
@@ -79,7 +80,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -88,19 +89,19 @@
           ]
         },
         {
-          "label": "帧计数",
+          "label": "frame_count",
           "name": "frame_count",
           "type": "INT",
           "links": null
         },
         {
-          "label": "音频",
+          "label": "audio",
           "name": "audio",
           "type": "AUDIO",
           "links": null
         },
         {
-          "label": "视频信息",
+          "label": "video_info",
           "name": "video_info",
           "type": "VHS_VIDEOINFO",
           "links": null
@@ -109,7 +110,8 @@
       "properties": {
         "cnr_id": "comfyui-videohelpersuite",
         "ver": "73418575ca842f5f7575c48f17f45181e14715c1",
-        "Node name for S&R": "VHS_LoadVideo"
+        "Node name for S&R": "VHS_LoadVideo",
+        "widget_ue_connectable": {}
       },
       "widgets_values": {
         "video": "4251.mp4",
@@ -154,7 +156,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "输入",
+          "label": "input",
           "name": "input",
           "type": "*",
           "link": 2
@@ -162,7 +164,7 @@
       ],
       "outputs": [
         {
-          "label": "字符串",
+          "label": "STRING",
           "name": "STRING",
           "type": "STRING",
           "links": null
@@ -171,7 +173,8 @@
       "properties": {
         "cnr_id": "comfyui_essentials",
         "ver": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
-        "Node name for S&R": "DisplayAny"
+        "Node name for S&R": "DisplayAny",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "raw value"
@@ -193,7 +196,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "images",
           "name": "images",
           "type": "IMAGE",
           "link": 3
@@ -203,7 +206,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -211,8 +215,8 @@
       "id": 5,
       "type": "DWPreprocessor",
       "pos": [
-        1210.42724609375,
-        3351.2041015625
+        1198.222900390625,
+        3316.62353515625
       ],
       "size": [
         320.79998779296875,
@@ -223,7 +227,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 4
@@ -231,7 +235,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -239,7 +243,7 @@
           ]
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -251,7 +255,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "enable",
@@ -275,12 +280,12 @@
         386.91571044921875
       ],
       "flags": {},
-      "order": 2,
+      "order": 1,
       "mode": 0,
       "inputs": [],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -288,7 +293,7 @@
           ]
         },
         {
-          "label": "遮罩",
+          "label": "MASK",
           "name": "MASK",
           "type": "MASK",
           "links": null
@@ -297,7 +302,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "LoadImage"
+        "Node name for S&R": "LoadImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "app3.png",
@@ -320,7 +326,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "images",
           "name": "images",
           "type": "IMAGE",
           "link": 5
@@ -330,7 +336,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -346,11 +353,11 @@
         222
       ],
       "flags": {},
-      "order": 21,
+      "order": 19,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 52
@@ -358,13 +365,13 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -375,7 +382,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "disable",
@@ -399,7 +407,7 @@
         973.6329345703125
       ],
       "flags": {},
-      "order": 3,
+      "order": 2,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -416,7 +424,8 @@
       "properties": {
         "cnr_id": "comfyui-openpose-editor",
         "ver": "1.0.2",
-        "Node name for S&R": "huchenlei.LoadOpenposeJSON"
+        "Node name for S&R": "huchenlei.LoadOpenposeJSON",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "{\"people\":[{\"pose_keypoints_2d\":[267.0120378301217,141.8650588081929,1,262.32302627635863,208.0301225144712,1,137.86693532569268,151.7658935449254,1,97.48834504529475,281.109063486671,1,87.71126633941213,379.9783426912316,1,372.3150219766005,150.83666079511374,1,390.44115802557644,279.99673318579954,1,418.2654998274743,386.5302594624213,1,171.19306575772669,333.0300849810565,1,157.52619456765558,466.60593604723266,1,131.559148622583,642.8775661656694,1,334.4770757705626,333.0911174980765,1,363.6593399949095,457.5852286062198,1,377.5101859681389,642.8165336486495,1,258.4342079947645,133.94706203709399,1,274.2702015369624,133.28722897283575,1,247.21704590237437,134.60689510135222,1,286.1471966936108,132.6273959085775,1],\"hand_right_keypoints_2d\":[83.50607520400564,386.28612939434134,1,90.865159690967,394.69651166515433,1,96.12164861022512,403.1068939359673,1,94.01905304252188,412.56857399063193,1,90.865159690967,419.9276584775933,1,81.4034796363024,406.2607872875222,1,82.45477742015402,419.9276584775933,1,86.65996855556051,422.03025404529654,1,89.81386190711538,423.08155182914817,1,75.09569293319265,407.3120850713738,1,78.24958628474752,420.9789562614449,1,82.45477742015402,423.08155182914817,1,86.65996855556051,424.1328496129998,1,71.94179958163778,408.36338285522544,1,75.09569293319265,419.9276584775933,1,79.30088406859915,422.03025404529654,1,82.45477742015402,423.08155182914817,1,69.83920401393453,408.36338285522544,1,71.94179958163778,417.82506290989005,1,75.09569293319265,419.9276584775933,1,78.24958628474752,419.9276584775933,1],\"hand_left_keypoints_2d\":[420.36809539517753,394.9406417332343,1,413.00901090821617,404.4023217878989,1,405.6499264212548,413.86400184256354,1,405.6499264212548,422.2743841133765,1,406.7012242051064,429.6334686003379,1,416.16290425977104,419.12049076182166,1,414.0603086920678,430.6847663841895,1,411.95771312436455,431.73606416804114,1,409.8551175566613,430.6847663841895,1,423.5219887467324,419.12049076182166,1,421.41939317902916,432.78736195189276,1,418.2654998274743,431.73606416804114,1,416.16290425977104,428.58217081648627,1,428.7784776659905,419.12049076182166,1,427.7271798821389,430.6847663841895,1,423.5219887467324,430.6847663841895,1,421.41939317902916,427.53087303263464,1,434.03496658524864,418.06919297797003,1,431.9323710175454,426.479575248783,1,428.7784776659905,427.53087303263464,1,426.6758820982873,425.4282774649314,1],\"face_keypoints_2d\":[249.2814386451888,132.7122894586172,1,249.2814386451888,137.3311209084249,1,250.6011047737053,141.94995235823262,1,251.92077090222176,147.22861687229857,1,253.2404370307383,151.18761525784805,1,256.5396023520295,155.80644670765577,1,259.8387676733207,159.10561202894698,1,263.7977660588702,161.74494428597995,1,268.4165975086779,163.06461041449646,1,273.0354289584856,161.74494428597995,1,276.9944273440351,158.44577896468874,1,279.63375960106805,155.14661364339753,1,282.273091858101,149.86794912933155,1,283.59275798661747,145.9089507437821,1,284.91242411513406,140.63028622971615,1,285.5722571793923,136.01145477990843,1,284.91242411513406,131.39262333010072,1,253.2404370307383,131.39262333010072,1,255.87976928777124,130.73279026584248,1,258.51910154480424,130.73279026584248,1,261.1584338018372,131.39262333010072,1,263.7977660588702,132.05245639435896,1,271.05592976571086,131.39262333010072,1,273.0354289584856,130.73279026584248,1,275.6747612155186,130.07295720158422,1,278.3140934725516,130.07295720158422,1,280.9534257295845,130.73279026584248,1,267.09693138016144,135.35162171565017,1,267.09693138016144,139.31062010119965,1,267.09693138016144,142.60978542249086,1,267.09693138016144,145.9089507437821,1,263.7977660588702,147.22861687229857,1,265.7772652516449,147.88844993655684,1,267.7567644444197,148.54828300081508,1,269.7362636371944,147.88844993655684,1,271.7157628299691,147.22861687229857,1,255.87976928777124,136.01145477990843,1,257.859268480546,136.01145477990843,1,260.49860073757895,135.35162171565017,1,262.4780999303537,136.01145477990843,1,260.49860073757895,136.01145477990843,1,257.859268480546,136.01145477990843,1,271.7157628299691,135.35162171565017,1,274.3550950870021,135.35162171565017,1,276.33459427977687,134.69178865139193,1,278.9739265368098,134.69178865139193,1,276.33459427977687,135.35162171565017,1,274.3550950870021,136.01145477990843,1,261.8182668660954,152.50728138636453,1,263.7977660588702,151.8474483221063,1,266.43709831590314,151.18761525784805,1,267.7567644444197,151.18761525784805,1,269.07643057293615,151.18761525784805,1,271.7157628299691,151.18761525784805,1,274.3550950870021,151.8474483221063,1,272.3755958942274,153.82694751488103,1,270.3960967014526,155.14661364339753,1,268.4165975086779,155.80644670765577,1,265.7772652516449,155.14661364339753,1,263.7977660588702,153.82694751488103,1,262.4780999303537,152.50728138636453,1,265.11743218738667,152.50728138636453,1,267.7567644444197,153.1671144506228,1,271.05592976571086,152.50728138636453,1,273.69526202274386,151.8474483221063,1,271.05592976571086,152.50728138636453,1,267.7567644444197,153.1671144506228,1,265.11743218738667,153.1671144506228,1,259.1789346090625,134.69178865139193,1,275.01492815126034,134.0319555871337,1]}],\"animals\":[],\"canvas_width\":512,\"canvas_height\":768}"
@@ -464,9 +473,11 @@
         }
       ],
       "properties": {
-        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "cnr_id": "Comfyui_SSsnap_pose-Remapping",
         "ver": "e44070ceda9ce917cc6447e068a12ed8a4afdb89",
-        "Node name for S&R": "PoseDiffCalculator"
+        "Node name for S&R": "PoseDiffCalculator",
+        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -486,7 +497,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "任意值",
+          "label": "any_value",
           "name": "any_value",
           "shape": 7,
           "type": "*",
@@ -495,7 +506,7 @@
       ],
       "outputs": [
         {
-          "label": "字符串",
+          "label": "string",
           "name": "string",
           "type": "STRING",
           "links": null
@@ -504,7 +515,8 @@
       "properties": {
         "cnr_id": "ComfyUI-Crystools",
         "ver": "576b44b9b79e3bf4b5d50457a28924d89a42e7e1",
-        "Node name for S&R": "Show any to JSON [Crystools]"
+        "Node name for S&R": "Show any to JSON [Crystools]",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -524,7 +536,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 65
@@ -532,7 +544,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "links": [
@@ -543,7 +555,8 @@
       "properties": {
         "cnr_id": "comfyui_layerstyle",
         "ver": "7b326d13e43fc4022cd80e472c7af67027409b1e",
-        "Node name for S&R": "LayerUtility: LayerImageTransform"
+        "Node name for S&R": "LayerUtility: LayerImageTransform",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0,
@@ -573,13 +586,13 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像1",
+          "label": "image1",
           "name": "image1",
           "type": "IMAGE",
           "link": 12
         },
         {
-          "label": "图像2",
+          "label": "image2",
           "name": "image2",
           "type": "IMAGE",
           "link": 13
@@ -587,7 +600,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -598,7 +611,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "ImageBlend"
+        "Node name for S&R": "ImageBlend",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0.5,
@@ -621,7 +635,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "images",
           "name": "images",
           "type": "IMAGE",
           "link": 14
@@ -631,7 +645,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "PreviewImage"
+        "Node name for S&R": "PreviewImage",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -647,11 +662,11 @@
         222
       ],
       "flags": {},
-      "order": 23,
+      "order": 21,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 53
@@ -659,13 +674,13 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -676,7 +691,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "disable",
@@ -700,7 +716,7 @@
         406
       ],
       "flags": {},
-      "order": 28,
+      "order": 26,
       "mode": 0,
       "inputs": [
         {
@@ -759,9 +775,14 @@
         }
       ],
       "properties": {
-        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "cnr_id": "Comfyui_SSsnap_pose-Remapping",
         "ver": "e44070ceda9ce917cc6447e068a12ed8a4afdb89",
-        "Node name for S&R": "ApplyPoseDiff"
+        "Node name for S&R": "ApplyPoseDiff",
+        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "widget_ue_connectable": {
+          "canvas_width": true,
+          "canvas_height": true
+        }
       },
       "widgets_values": [
         768,
@@ -770,7 +791,7 @@
         false,
         false,
         false,
-        true,
+        false,
         false,
         false,
         false,
@@ -795,7 +816,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 20
@@ -803,7 +824,7 @@
       ],
       "outputs": [
         {
-          "label": "宽度",
+          "label": "width",
           "name": "width",
           "type": "INT",
           "links": [
@@ -813,7 +834,7 @@
           ]
         },
         {
-          "label": "高度",
+          "label": "height",
           "name": "height",
           "type": "INT",
           "links": [
@@ -832,7 +853,8 @@
       "properties": {
         "cnr_id": "comfyui_essentials",
         "ver": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
-        "Node name for S&R": "GetImageSize+"
+        "Node name for S&R": "GetImageSize+",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -848,11 +870,11 @@
         222
       ],
       "flags": {},
-      "order": 20,
+      "order": 18,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 51
@@ -860,13 +882,13 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -877,7 +899,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "disable",
@@ -901,11 +924,11 @@
         222
       ],
       "flags": {},
-      "order": 22,
+      "order": 20,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 50
@@ -913,13 +936,13 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -930,7 +953,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "disable",
@@ -954,7 +978,7 @@
         406
       ],
       "flags": {},
-      "order": 27,
+      "order": 25,
       "mode": 0,
       "inputs": [
         {
@@ -1013,9 +1037,14 @@
         }
       ],
       "properties": {
-        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "cnr_id": "Comfyui_SSsnap_pose-Remapping",
         "ver": "e44070ceda9ce917cc6447e068a12ed8a4afdb89",
-        "Node name for S&R": "ApplyPoseDiff"
+        "Node name for S&R": "ApplyPoseDiff",
+        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "widget_ue_connectable": {
+          "canvas_width": true,
+          "canvas_height": true
+        }
       },
       "widgets_values": [
         768,
@@ -1045,7 +1074,7 @@
         46
       ],
       "flags": {},
-      "order": 32,
+      "order": 30,
       "mode": 0,
       "inputs": [
         {
@@ -1072,9 +1101,11 @@
         }
       ],
       "properties": {
-        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "cnr_id": "Comfyui_SSsnap_pose-Remapping",
         "ver": "e44070ceda9ce917cc6447e068a12ed8a4afdb89",
-        "Node name for S&R": "CalcScaledPoseDiff"
+        "Node name for S&R": "CalcScaledPoseDiff",
+        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -1090,7 +1121,7 @@
         128
       ],
       "flags": {},
-      "order": 18,
+      "order": 22,
       "mode": 0,
       "inputs": [
         {
@@ -1117,7 +1148,7 @@
       ],
       "outputs": [
         {
-          "label": "整数",
+          "label": "INT",
           "name": "INT",
           "type": "INT",
           "links": [
@@ -1127,7 +1158,7 @@
           ]
         },
         {
-          "label": "浮点",
+          "label": "FLOAT",
           "name": "FLOAT",
           "type": "FLOAT",
           "links": null
@@ -1135,7 +1166,8 @@
       ],
       "properties": {
         "cnr_id": "comfyui-custom-scripts",
-        "ver": "2c09d59ab5ac27ac59022832bfde4eeeb9c55825"
+        "ver": "2c09d59ab5ac27ac59022832bfde4eeeb9c55825",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "a+1"
@@ -1153,7 +1185,7 @@
         58
       ],
       "flags": {},
-      "order": 5,
+      "order": 3,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1169,7 +1201,8 @@
       "properties": {
         "cnr_id": "comfyui-logic",
         "ver": "42d4f3df45fb7f0dd6e2201a14c07d4dd09f235d",
-        "Node name for S&R": "Int-🔬"
+        "Node name for S&R": "Int-🔬",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         -1
@@ -1187,11 +1220,11 @@
         805.7747192382812
       ],
       "flags": {},
-      "order": 25,
+      "order": 27,
       "mode": 0,
       "inputs": [
         {
-          "label": "批次管理",
+          "label": "meta_batch",
           "name": "meta_batch",
           "shape": 7,
           "type": "VHS_BatchManager",
@@ -1216,7 +1249,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -1224,19 +1257,19 @@
           ]
         },
         {
-          "label": "帧计数",
+          "label": "frame_count",
           "name": "frame_count",
           "type": "INT",
           "links": null
         },
         {
-          "label": "音频",
+          "label": "audio",
           "name": "audio",
           "type": "AUDIO",
           "links": null
         },
         {
-          "label": "视频信息",
+          "label": "video_info",
           "name": "video_info",
           "type": "VHS_VIDEOINFO",
           "links": null
@@ -1245,7 +1278,10 @@
       "properties": {
         "cnr_id": "comfyui-videohelpersuite",
         "ver": "73418575ca842f5f7575c48f17f45181e14715c1",
-        "Node name for S&R": "VHS_LoadVideo"
+        "Node name for S&R": "VHS_LoadVideo",
+        "widget_ue_connectable": {
+          "skip_first_frames": true
+        }
       },
       "widgets_values": {
         "video": "4251.mp4",
@@ -1286,11 +1322,11 @@
         222
       ],
       "flags": {},
-      "order": 29,
+      "order": 32,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 31
@@ -1298,13 +1334,13 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -1315,7 +1351,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "disable",
@@ -1339,7 +1376,7 @@
         58
       ],
       "flags": {},
-      "order": 6,
+      "order": 4,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -1355,7 +1392,8 @@
       "properties": {
         "cnr_id": "comfyui-logic",
         "ver": "42d4f3df45fb7f0dd6e2201a14c07d4dd09f235d",
-        "Node name for S&R": "Int-🔬"
+        "Node name for S&R": "Int-🔬",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0
@@ -1373,11 +1411,11 @@
         222
       ],
       "flags": {},
-      "order": 30,
+      "order": 33,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 32
@@ -1385,13 +1423,13 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
         },
         {
-          "label": "姿态关键点",
+          "label": "POSE_KEYPOINT",
           "name": "POSE_KEYPOINT",
           "type": "POSE_KEYPOINT",
           "links": [
@@ -1402,7 +1440,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "DWPreprocessor"
+        "Node name for S&R": "DWPreprocessor",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "disable",
@@ -1504,9 +1543,16 @@
         }
       ],
       "properties": {
-        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "cnr_id": "Comfyui_SSsnap_pose-Remapping",
         "ver": "e44070ceda9ce917cc6447e068a12ed8a4afdb89",
-        "Node name for S&R": "ApplyPoseDiff"
+        "Node name for S&R": "ApplyPoseDiff",
+        "aux_id": "SS-snap/Comfyui_SSsnap_pose-Remapping",
+        "widget_ue_connectable": {
+          "canvas_width": true,
+          "canvas_height": true,
+          "current_step": true,
+          "total_steps": true
+        }
       },
       "widgets_values": [
         768,
@@ -1532,7 +1578,7 @@
         3694.166748046875
       ],
       "size": [
-        210,
+        221.18905639648438,
         106
       ],
       "flags": {},
@@ -1540,7 +1586,7 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "姿态关键点",
+          "label": "kps",
           "name": "kps",
           "type": "POSE_KEYPOINT",
           "link": 38
@@ -1548,7 +1594,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -1559,7 +1605,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "RenderPeopleKps"
+        "Node name for S&R": "RenderPeopleKps",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         true,
@@ -1579,15 +1626,24 @@
         158
       ],
       "flags": {},
-      "order": 11,
+      "order": 13,
       "mode": 0,
       "inputs": [
         {
-          "label": "初始值1",
+          "label": "initial_value1",
           "name": "initial_value1",
           "shape": 7,
           "type": "*",
           "link": 39
+        },
+        {
+          "label": "total",
+          "name": "total",
+          "type": "INT",
+          "widget": {
+            "name": "total"
+          },
+          "link": 63
         },
         {
           "label": "initial_value2",
@@ -1606,19 +1662,11 @@
           "name": "initial_value4",
           "type": "*",
           "link": null
-        },
-        {
-          "name": "total",
-          "type": "INT",
-          "widget": {
-            "name": "total"
-          },
-          "link": 63
         }
       ],
       "outputs": [
         {
-          "label": "流",
+          "label": "flow",
           "name": "flow",
           "shape": 5,
           "type": "FLOW_CONTROL",
@@ -1627,13 +1675,13 @@
           ]
         },
         {
-          "label": "索引",
+          "label": "index",
           "name": "index",
           "type": "INT",
           "links": null
         },
         {
-          "label": "值1",
+          "label": "value1",
           "name": "value1",
           "type": "*",
           "links": [
@@ -1666,7 +1714,10 @@
       "properties": {
         "cnr_id": "comfyui-easy-use",
         "ver": "1.2.7",
-        "Node name for S&R": "easy forLoopStart"
+        "Node name for S&R": "easy forLoopStart",
+        "widget_ue_connectable": {
+          "total": true
+        }
       },
       "widgets_values": [
         30
@@ -1686,7 +1737,7 @@
         128
       ],
       "flags": {},
-      "order": 19,
+      "order": 23,
       "mode": 0,
       "inputs": [
         {
@@ -1713,7 +1764,7 @@
       ],
       "outputs": [
         {
-          "label": "整数",
+          "label": "INT",
           "name": "INT",
           "type": "INT",
           "links": [
@@ -1722,7 +1773,7 @@
           ]
         },
         {
-          "label": "浮点",
+          "label": "FLOAT",
           "name": "FLOAT",
           "type": "FLOAT",
           "links": null
@@ -1730,7 +1781,8 @@
       ],
       "properties": {
         "cnr_id": "comfyui-custom-scripts",
-        "ver": "2c09d59ab5ac27ac59022832bfde4eeeb9c55825"
+        "ver": "2c09d59ab5ac27ac59022832bfde4eeeb9c55825",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         "a+1"
@@ -1748,11 +1800,11 @@
         805.7747192382812
       ],
       "flags": {},
-      "order": 26,
+      "order": 28,
       "mode": 0,
       "inputs": [
         {
-          "label": "批次管理",
+          "label": "meta_batch",
           "name": "meta_batch",
           "shape": 7,
           "type": "VHS_BatchManager",
@@ -1777,7 +1829,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -1785,19 +1837,19 @@
           ]
         },
         {
-          "label": "帧计数",
+          "label": "frame_count",
           "name": "frame_count",
           "type": "INT",
           "links": null
         },
         {
-          "label": "音频",
+          "label": "audio",
           "name": "audio",
           "type": "AUDIO",
           "links": null
         },
         {
-          "label": "视频信息",
+          "label": "video_info",
           "name": "video_info",
           "type": "VHS_VIDEOINFO",
           "links": null
@@ -1806,7 +1858,10 @@
       "properties": {
         "cnr_id": "comfyui-videohelpersuite",
         "ver": "73418575ca842f5f7575c48f17f45181e14715c1",
-        "Node name for S&R": "VHS_LoadVideo"
+        "Node name for S&R": "VHS_LoadVideo",
+        "widget_ue_connectable": {
+          "skip_first_frames": true
+        }
       },
       "widgets_values": {
         "video": "4251.mp4",
@@ -1876,7 +1931,8 @@
       "properties": {
         "cnr_id": "comfyui-easy-use",
         "ver": "1.2.7",
-        "Node name for S&R": "easy batchAnything"
+        "Node name for S&R": "easy batchAnything",
+        "widget_ue_connectable": {}
       },
       "widgets_values": []
     },
@@ -1896,14 +1952,14 @@
       "mode": 0,
       "inputs": [
         {
-          "label": "流",
+          "label": "flow",
           "name": "flow",
           "shape": 5,
           "type": "FLOW_CONTROL",
           "link": 45
         },
         {
-          "label": "初始值1",
+          "label": "initial_value1",
           "name": "initial_value1",
           "shape": 7,
           "type": "*",
@@ -1922,6 +1978,7 @@
           "link": 48
         },
         {
+          "label": "initial_value4",
           "name": "initial_value4",
           "type": "*",
           "link": null
@@ -1929,7 +1986,7 @@
       ],
       "outputs": [
         {
-          "label": "值1",
+          "label": "value1",
           "name": "value1",
           "type": "*",
           "links": null
@@ -1950,6 +2007,7 @@
           ]
         },
         {
+          "label": "value4",
           "name": "value4",
           "type": "*",
           "links": null
@@ -1958,7 +2016,8 @@
       "properties": {
         "cnr_id": "comfyui-easy-use",
         "ver": "1.2.7",
-        "Node name for S&R": "easy forLoopEnd"
+        "Node name for S&R": "easy forLoopEnd",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [],
       "color": "#223",
@@ -1976,11 +2035,11 @@
         645.18310546875
       ],
       "flags": {},
-      "order": 7,
+      "order": 5,
       "mode": 0,
       "inputs": [
         {
-          "label": "批次管理",
+          "label": "meta_batch",
           "name": "meta_batch",
           "shape": 7,
           "type": "VHS_BatchManager",
@@ -1996,7 +2055,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -2005,19 +2064,19 @@
           ]
         },
         {
-          "label": "帧计数",
+          "label": "frame_count",
           "name": "frame_count",
           "type": "INT",
           "links": null
         },
         {
-          "label": "音频",
+          "label": "audio",
           "name": "audio",
           "type": "AUDIO",
           "links": null
         },
         {
-          "label": "视频信息",
+          "label": "video_info",
           "name": "video_info",
           "type": "VHS_VIDEOINFO",
           "links": null
@@ -2026,7 +2085,8 @@
       "properties": {
         "cnr_id": "comfyui-videohelpersuite",
         "ver": "73418575ca842f5f7575c48f17f45181e14715c1",
-        "Node name for S&R": "VHS_LoadVideo"
+        "Node name for S&R": "VHS_LoadVideo",
+        "widget_ue_connectable": {}
       },
       "widgets_values": {
         "video": "4月10日-6.mp4",
@@ -2067,11 +2127,11 @@
         82
       ],
       "flags": {},
-      "order": 12,
+      "order": 11,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 54
@@ -2079,7 +2139,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -2091,7 +2151,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "ImageFromBatch"
+        "Node name for S&R": "ImageFromBatch",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0,
@@ -2110,11 +2171,11 @@
         82
       ],
       "flags": {},
-      "order": 13,
+      "order": 12,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "image",
           "name": "image",
           "type": "IMAGE",
           "link": 55
@@ -2122,7 +2183,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": [
@@ -2134,7 +2195,8 @@
       "properties": {
         "cnr_id": "comfy-core",
         "ver": "0.3.30",
-        "Node name for S&R": "ImageFromBatch"
+        "Node name for S&R": "ImageFromBatch",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         1,
@@ -2153,7 +2215,7 @@
         58
       ],
       "flags": {},
-      "order": 4,
+      "order": 6,
       "mode": 0,
       "inputs": [],
       "outputs": [
@@ -2170,7 +2232,8 @@
       "properties": {
         "cnr_id": "comfyui-logic",
         "ver": "42d4f3df45fb7f0dd6e2201a14c07d4dd09f235d",
-        "Node name for S&R": "Int-🔬"
+        "Node name for S&R": "Int-🔬",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         0
@@ -2180,38 +2243,39 @@
       "id": 47,
       "type": "VHS_VideoCombine",
       "pos": [
-        5496.5556640625,
-        4278.9130859375
+        5272.9755859375,
+        4284.646484375
       ],
       "size": [
-        210,
-        633
+        220.5830078125,
+        460.77288818359375
       ],
       "flags": {},
       "order": 39,
       "mode": 0,
       "inputs": [
         {
-          "label": "图像",
+          "label": "images",
           "name": "images",
           "type": "IMAGE",
           "link": 66
         },
         {
-          "label": "音频",
+          "label": "audio",
           "name": "audio",
           "shape": 7,
           "type": "AUDIO",
           "link": null
         },
         {
-          "label": "批次管理",
+          "label": "meta_batch",
           "name": "meta_batch",
           "shape": 7,
           "type": "VHS_BatchManager",
           "link": null
         },
         {
+          "label": "vae",
           "name": "vae",
           "shape": 7,
           "type": "VAE",
@@ -2220,7 +2284,7 @@
       ],
       "outputs": [
         {
-          "label": "文件名",
+          "label": "Filenames",
           "name": "Filenames",
           "type": "VHS_FILENAMES",
           "links": null
@@ -2229,7 +2293,8 @@
       "properties": {
         "cnr_id": "comfyui-videohelpersuite",
         "ver": "73418575ca842f5f7575c48f17f45181e14715c1",
-        "Node name for S&R": "VHS_VideoCombine"
+        "Node name for S&R": "VHS_VideoCombine",
+        "widget_ue_connectable": {}
       },
       "widgets_values": {
         "frame_rate": 15,
@@ -2269,11 +2334,13 @@
         88
       ],
       "flags": {},
-      "order": 1,
+      "order": 7,
       "mode": 0,
       "inputs": [],
       "outputs": [],
-      "properties": {},
+      "properties": {
+        "widget_ue_connectable": {}
+      },
       "widgets_values": [
         "openpose editor:\nhttps://github.com/huchenlei/ComfyUI-openpose-editor"
       ],
@@ -2292,11 +2359,11 @@
         106
       ],
       "flags": {},
-      "order": 33,
+      "order": 31,
       "mode": 0,
       "inputs": [
         {
-          "label": "姿态关键点",
+          "label": "kps",
           "name": "kps",
           "type": "POSE_KEYPOINT",
           "link": 68
@@ -2304,7 +2371,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
@@ -2313,7 +2380,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "RenderPeopleKps"
+        "Node name for S&R": "RenderPeopleKps",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         true,
@@ -2333,11 +2401,11 @@
         106
       ],
       "flags": {},
-      "order": 31,
+      "order": 29,
       "mode": 0,
       "inputs": [
         {
-          "label": "姿态关键点",
+          "label": "kps",
           "name": "kps",
           "type": "POSE_KEYPOINT",
           "link": 70
@@ -2345,7 +2413,7 @@
       ],
       "outputs": [
         {
-          "label": "图像",
+          "label": "IMAGE",
           "name": "IMAGE",
           "type": "IMAGE",
           "links": []
@@ -2354,7 +2422,8 @@
       "properties": {
         "cnr_id": "comfyui_controlnet_aux",
         "ver": "83463c2e4b04e729268e57f638b4212e0da4badc",
-        "Node name for S&R": "RenderPeopleKps"
+        "Node name for S&R": "RenderPeopleKps",
+        "widget_ue_connectable": {}
       },
       "widgets_values": [
         true,
@@ -2609,7 +2678,7 @@
       33,
       0,
       37,
-      1,
+      2,
       "*"
     ],
     [
@@ -2785,7 +2854,7 @@
       46,
       0,
       37,
-      4,
+      1,
       "INT"
     ],
     [
@@ -2951,13 +3020,13 @@
   "config": {},
   "extra": {
     "ds": {
-      "scale": 0.3138428376721005,
+      "scale": 0.31384283767210164,
       "offset": [
-        1177.5659315976573,
-        -2331.1258528667577
+        286.9338352612993,
+        -2083.0826363534907
       ]
     },
-    "frontendVersion": "1.17.11",
+    "frontendVersion": "1.21.7",
     "node_versions": {
       "comfyui_controlnet_aux": "5a049bde9cc117dafc327cded156459289097ea1",
       "comfyui_essentials": "33ff89fd354d8ec3ab6affb605a79a931b445d99",
