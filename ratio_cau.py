@@ -6,8 +6,8 @@ class CalculatePoseScales:
     def INPUT_TYPES(cls):
         return {
             "required": {
-                "ref_json": ("POSE_KEYPOINT",),  # 标准化后 data.json 风格（list of frame dict）
-                "raw_json": ("POSE_KEYPOINT",),  # 或者直接是关键点列表（KEY_POINTS）
+                "ref_json": ("POSE_KEYPOINT",), 
+                "raw_json": ("POSE_KEYPOINT",), 
             }
         }
 
@@ -40,15 +40,15 @@ class CalculatePoseScales:
           - list of floats 或 list of [x,y,c]
         统一转成 (N,3) 的 NumPy array。
         """
-        # 如果是 JSON 字符串，先加载
+
         if isinstance(data, str):
             data = json.loads(data)
 
-        # 如果是 dict，则当成单帧包装到 list
+
         if isinstance(data, dict):
             data = [data]
 
-        # 如果是 list 且首元素是 dict → 标准化帧格式
+
         if isinstance(data, list) and data and isinstance(data[0], dict):
             frame = data[0]
             people = frame.get("people")
@@ -59,18 +59,18 @@ class CalculatePoseScales:
                 raise ValueError("people[0] 中找不到 pose_keypoints_2d")
             arr = np.array(kp_list, dtype=np.float32)
 
-        # 如果是 list 且元素是数字序列 → 直接当成关键点数组
+
         elif isinstance(data, list) and data and isinstance(data[0], (int, float)):
             arr = np.array(data, dtype=np.float32)
 
-        # 如果是嵌套 list ([[x,y,c],…])
+
         elif isinstance(data, list) and data and isinstance(data[0], list):
             arr = np.array(data, dtype=np.float32).reshape(-1, 3)
 
         else:
             raise ValueError(f"无法识别的 keypoints 输入格式: {type(data)}")
 
-        # 最终统一 shape 成 (N,3)
+
         if arr.ndim == 1:
             arr = arr.reshape(-1, 3)
         if arr.shape[1] != 3:
@@ -79,13 +79,13 @@ class CalculatePoseScales:
 
     def _segment_length(self, kps, i, j):
         a, b = kps[i, :2], kps[j, :2]
-        # 置信度为 0 或者坐标全 0 时视为无效
+
         if np.any(a == 0) or np.any(b == 0):
             return np.nan
         return float(np.linalg.norm(a - b))
 
     def calculate_scales(self, ref_json, raw_json):
-        # 把 ref_json 和 raw_json 都转成 (N,3) 数组
+
         kps_ref = self._to_kps_array(ref_json)
         kps_raw = self._to_kps_array(raw_json)
 
