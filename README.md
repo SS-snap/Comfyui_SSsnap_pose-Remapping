@@ -89,8 +89,6 @@
 | `frame_list` | `POSE_KEYPOINT` | 多帧姿态数据（待缩放与对齐）                 |
 | `scales`     | `SCALES`        | 每条骨骼的缩放比例（如左臂、右腿）              |
 | `ref_pose`   | `POSE_KEYPOINT` | 用于初始对齐的参考姿态帧（例如原始 OpenPose 输出） |
-| 输入名           | 类型              | 描述              |
-| ------------- | --------------- | --------------- |
 | `kps`         | `POSE_KEYPOINT` | 多帧关键点数据         |
 | `render_body` | `BOOLEAN`       | 是否绘制身体主骨架（默认启用） |
 
