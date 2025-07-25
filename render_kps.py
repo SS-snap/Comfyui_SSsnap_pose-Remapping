@@ -47,11 +47,10 @@ class RenderKps:
         if not imgs:
             imgs = [torch.zeros((1, 1, 3), dtype=torch.float32)]
 
-        # ── 把 [H,W,3] 堆到一起 → [B,H,W,3]
-        batch = torch.stack(imgs, dim=0)  # B × H × W × 3
-        print("batch shape:", batch.shape)  # e.g. torch.Size([2,768,512,3])
 
-        # 返回一个 tuple，符合 RETURN_TYPES
+        batch = torch.stack(imgs, dim=0)  
+        print("batch shape:", batch.shape)  
+
         return (batch,)
 
 NODE_CLASS_MAPPINGS = {
