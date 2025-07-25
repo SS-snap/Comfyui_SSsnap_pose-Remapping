@@ -84,16 +84,16 @@
 
 ## 🔧 Node Inputs | 节点输入说明
 
-| 输入名                | 类型              | 描述 |
-|---------------------|------------------|------|
-| `pose_diff`         | `POSE_KEYPOINT`  | 初始差值（调整后 - 原始） |
-| `original_frame_pose` | `POSE_KEYPOINT` | 当前帧原始姿态 |
-| `prev_original_frame_pose` | `POSE_KEYPOINT` | 上一帧原始姿态，用于动作幅度计算 |
-| `scaled_pose_diff` *(可选)* | `POSE_KEYPOINT` | 全局目标位置差值（最终 - 当前），用于缓动过渡 |
-| `current_step` *(可选)*     | `INT`          | 当前帧序号（用于插值） |
-| `total_steps` *(可选)*      | `INT`          | 总帧数（用于插值） |
-| `canvas_width`       | `INT`           | 输出图像宽度 |
-| `canvas_height`      | `INT`           | 输出图像高度 |
+| 输入名          | 类型              | 描述                             |
+| ------------ | --------------- | ------------------------------ |
+| `frame_list` | `POSE_KEYPOINT` | 多帧姿态数据（待缩放与对齐）                 |
+| `scales`     | `SCALES`        | 每条骨骼的缩放比例（如左臂、右腿）              |
+| `ref_pose`   | `POSE_KEYPOINT` | 用于初始对齐的参考姿态帧（例如原始 OpenPose 输出） |
+| 输入名           | 类型              | 描述              |
+| ------------- | --------------- | --------------- |
+| `kps`         | `POSE_KEYPOINT` | 多帧关键点数据         |
+| `render_body` | `BOOLEAN`       | 是否绘制身体主骨架（默认启用） |
+
 
 
 ## display
